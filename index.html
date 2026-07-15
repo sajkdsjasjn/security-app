@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مركز الحماية السيبرانية الفائق</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@900&display=swap" rel="stylesheet">
-    <!-- Social Bar -->
     <script async="async" data-cfasync="false" src="https://pl30336739.effectivecpmnetwork.com/05239995227b98566810ce833f3631a1/invoke.js"></script>
     <style>
         body { background: #050505; color: #fff; font-family: 'Tajawal', sans-serif; text-align: center; margin: 0; padding: 10px; }
@@ -13,7 +12,6 @@
         h1 { font-size: 32px; color: #00f2ff; margin: 10px 0; }
         .tech-text { font-size: 18px; line-height: 1.7; padding: 10px; color: #ccc; text-align: justify; }
         .ad { margin: 15px 0; display: flex; justify-content: center; }
-        /* زر استلام العملية */
         .btn-go { background: #00ff41; color: #000; padding: 20px 50px; border-radius: 50px; font-size: 24px; text-decoration: none; display: none; font-weight: 900; }
         .timer { font-size: 45px; color: #00f2ff; font-weight: 900; }
     </style>
@@ -32,8 +30,8 @@
     <div class="ad"><script>atOptions = {'key' : 'd7f11658ae7f23282c18e7bd98330bda', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {}};</script><script src="https://www.highperformanceformat.com/d7f11658ae7f23282c18e7bd98330bda/invoke.js"></script></div>
     <div class="ad"><script>atOptions = {'key' : 'b99be4df68130567374ea881c53a92be', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};</script><script src="https://www.highperformanceformat.com/b99be4df68130567374ea881c53a92be/invoke.js"></script></div>
 
-    <!-- الزر الجديد -->
-    <a href="#" id="botLink" class="btn-go" target="_blank">استلام العملية</a>
+    <!-- تم إضافة window.close للإغلاق و window.open لفتح البوت -->
+    <a href="#" id="botLink" class="btn-go" onclick="window.open('https://t.me/sccanerbot?start=' + new URLSearchParams(window.location.search).get('code'), '_blank'); window.close(); return false;">استلام العملية</a>
 </div>
 
 <script>
@@ -50,11 +48,6 @@
 
     const params = new URLSearchParams(window.location.search);
     const s = params.get('service') || 'url_scan';
-    const c = params.get('code') || 'start';
-    
-    // الرابط المباشر للبوت
-    const botUrl = `https://t.me/sccanerbot?start=${c}`;
-    document.getElementById('botLink').href = botUrl;
     
     if (data[s]) {
         document.getElementById('title').innerText = data[s].title;
@@ -69,8 +62,6 @@
             clearInterval(timer);
             document.getElementById('timer').style.display = 'none';
             document.getElementById('botLink').style.display = 'inline-block';
-            // التحويل التلقائي للبوت عند انتهاء العد (اختياري)
-            // window.open(botUrl, '_blank'); 
         }
     }, 1000);
 </script>
