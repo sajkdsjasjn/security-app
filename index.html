@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cyber Security Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; font-family:Tajawal,sans-serif; }
+        body{ background:#050505; color:#fff; padding:15px; overflow-x:hidden; }
+        .container{ max-width:720px; margin:auto; }
+        .card{ background:#101010; border:1px solid #222; border-radius:25px; padding:22px; box-shadow: 0 0 25px rgba(0,255,255,.08); margin-bottom:20px; }
+        .logo{ width:95px; height:95px; margin:auto; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:50px; background:#0d0d0d; border:2px solid #00f2ff; animation:pulse 2s infinite; }
+        @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.06)} 100%{transform:scale(1)} }
+        .title{ margin-top:15px; font-size:30px; font-weight:900; text-align:center; color:#00f2ff; }
+        .sub{ margin-top:15px; font-size:16px; text-align:justify; color:#bdbdbd; line-height:1.8; padding: 0 10px; }
+        .progress{ width:100%; height:18px; background:#242424; border-radius:30px; overflow:hidden; margin-top: 20px; }
+        .bar{ height:100%; width:0%; background:linear-gradient(90deg,#00ff66,#00f2ff); transition:width .5s; }
+        .percent{ margin-top:10px; text-align:center; font-size:28px; font-weight:900; color:#00ff66; }
+        .timer{ margin-top:5px; text-align:center; font-size:40px; font-weight:900; color:#00f2ff; }
+        .report{ display:none; margin-top:25px; text-align:center; }
+        .report button{ background:#00ff66; color:#000; border:none; padding:18px 45px; font-size:20px; font-weight:900; border-radius:50px; cursor:pointer; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <div class="card">
+        <div class="logo" id="logoIcon">🛡</div>
+        <div class="title" id="serviceTitle">جاري تهيئة النظام...</div>
+        <div class="sub" id="serviceDesc"></div>
+        
+        <script async="async" data-cfasync="false" src="https://pl30336739.effectivecpmnetwork.com/05239995227b98566810ce833f3631a1/invoke.js"></script>
+        <div id="container-05239995227b98566810ce833f3631a1"></div>
+
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <div class="percent" id="percent">0%</div>
+
+        <div class="report" id="report">
+            <button id="showResult">📄 عرض التقرير داخل البوت</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const services = {
+        "url_scan": { icon: "🔗", title: "محرك التحليل الأمني للروابط", desc: "يقوم النظام ببدء تحليل شامل للرابط باستخدام عدة مراحل متتالية تشمل فحص بنية الرابط، والتحقق من النطاق، وتحليل عمليات إعادة التوجيه، ومراجعة مؤشرات السمعة الأمنية، واكتشاف الأنماط المستخدمة في التصيد الاحتيالي والهندسة الاجتماعية، بالإضافة إلى البحث عن المؤشرات التي قد تدل على توزيع برمجيات خبيثة أو صفحات مزيفة. يتم تنفيذ عملية التحليل بطريقة متدرجة لتوفير تقييم شامل يساعد المستخدم على معرفة مستوى موثوقية الرابط وتقليل احتمالية التعرض للتهديدات الإلكترونية قبل فتحه." },
+        "file_scan": { icon: "📄", title: "محرك الفحص المتقدم للملفات", desc: "يقوم النظام بإجراء تحليل أمني متكامل للملف للكشف عن البرمجيات الضارة والمؤشرات المشبوهة والأنماط التي قد تدل على وجود ملفات تنفيذية خبيثة أو أكواد ضارة. تشمل عملية الفحص تحليل خصائص الملف، والتحقق من سلامة بنيته، ومراجعة البصمة الرقمية، ومقارنة النتائج بالمعلومات الأمنية المتاحة، مما يساعد في تقييم مستوى الأمان قبل تشغيل الملف أو مشاركته مع الآخرين وتقليل مخاطر الإصابة بالبرمجيات الخبيثة." },
+        "password_leak": { icon: "🛡", title: "محرك التحقق من تسريبات البيانات", desc: "يقوم النظام بالتحقق مما إذا كانت بيانات الاعتماد أو كلمة المرور مرتبطة بحوادث تسريب بيانات معروفة أو قواعد بيانات منشورة، مع مراجعة المؤشرات المتاحة لتقييم احتمالية تعرض الحساب للخطر. تساعد هذه العملية المستخدم على معرفة ما إذا كانت بياناته تحتاج إلى تغيير أو تحديث، مما يعزز مستوى الحماية ويقلل من احتمالية الاستيلاء على الحسابات أو إساءة استخدامها." },
+        "password_strength": { icon: "🔒", title: "محلل قوة كلمات المرور", desc: "يقوم النظام بتحليل كلمة المرور اعتماداً على مجموعة من المعايير الأمنية، مثل طول كلمة المرور، وتنوع الأحرف، واستخدام الأرقام والرموز، ومدى مقاومتها لمحاولات التخمين. كما يقدم تقييماً عاماً لمستوى القوة مع توصيات تساعد المستخدم على إنشاء كلمة مرور أكثر صلابة وقدرة على مقاومة الهجمات الشائعة التي تستهدف بيانات تسجيل الدخول." },
+        "email_leak": { icon: "📧", title: "محرك تحليل أمان البريد الإلكتروني", desc: "يقوم النظام بالتحقق من ظهور البريد الإلكتروني ضمن قواعد بيانات لاختراقات أو تسريبات معروفة، مع تقييم مستوى التعرض المحتمل للمخاطر المرتبطة بالحسابات المرتبطة بهذا البريد. تساعد هذه العملية على معرفة ما إذا كان من الضروري تغيير كلمات المرور أو تفعيل وسائل حماية إضافية مثل المصادقة الثنائية للحفاظ على أمن الحسابات." },
+        "username_search": { icon: "👤", title: "محرك تحليل البصمة الرقمية", desc: "يقوم النظام بالبحث عن اسم المستخدم في المصادر العامة المتاحة بهدف تقييم مدى ظهوره على الإنترنت، وتحليل المعلومات المرتبطة به، وتقدير حجم البصمة الرقمية المكشوفة. يساعد هذا الفحص على التعرف على المعلومات العامة التي قد تكون متاحة للآخرين، مما يساهم في تحسين الخصوصية وتقليل فرص استغلال البيانات في عمليات الهندسة الاجتماعية أو انتحال الهوية." },
+        "shortlink_decoder": { icon: "🔍", title: "محرك تحليل الروابط المختصرة", desc: "يقوم النظام بتتبع الرابط المختصر وتحليل سلسلة إعادة التوجيه للوصول إلى الوجهة النهائية، مع مراجعة الرابط الناتج وتقييم مستوى موثوقيته قبل فتحه. تساعد هذه العملية على اكتشاف الروابط المخفية أو المضللة وتقليل مخاطر الوصول إلى مواقع ضارة أو صفحات تصيد احتيالي تستخدم الروابط المختصرة لإخفاء وجهتها الحقيقية." },
+        "whatsapp_link_maker": { icon: "💬", title: "مولد روابط واتساب", desc: "يقوم النظام بإنشاء رابط واتساب مباشر قابل للمشاركة يتيح بدء المحادثة مع أي رقم بسهولة دون الحاجة إلى حفظه في جهات الاتصال. يتم تجهيز الرابط بصيغة متوافقة مع تطبيق واتساب لتوفير تجربة استخدام سريعة وسلسة، مما يجعله مناسباً للاستخدام الشخصي أو التجاري أو لخدمات الدعم والتواصل مع العملاء." }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const serviceKey = params.get("service") || "url_scan";
+    const code = params.get("code") || "";
+    const current = services[serviceKey] || services.url_scan;
+
+    document.getElementById("logoIcon").innerHTML = current.icon;
+    document.getElementById("serviceTitle").innerHTML = current.title;
+    document.getElementById("serviceDesc").innerHTML = current.desc;
+
+    let progress = 0;
+    const bar = document.getElementById("bar");
+    const percent = document.getElementById("percent");
+    const report = document.getElementById("report");
+
+    const engine = setInterval(() => {
+        progress += 1;
+        bar.style.width = progress + "%";
+        percent.innerHTML = progress + "%";
+
+        if(progress >= 100) {
+            clearInterval(engine);
+            report.style.display = "block";
+        }
+    }, 300);
+
+    document.getElementById("showResult").onclick = function() {
+        window.location.href = "https://t.me/Sccanerbot?start=" + encodeURIComponent(code);
+    };
+</script>
+
+</body>
+</html>
